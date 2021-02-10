@@ -1,5 +1,4 @@
 ﻿Feature: Episode1: Present Codecasts
-	Simple calculator for adding two numbers
 
 @mytag
 Scenario: Present No Codecasts
