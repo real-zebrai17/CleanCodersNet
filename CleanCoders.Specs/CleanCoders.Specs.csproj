@@ -26,7 +26,10 @@
   <ItemGroup>
     <Folder Include="Drivers\" />
     <Folder Include="Hooks\" />
-    <Folder Include="Steps\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CleanCoders\CleanCoders.csproj" />
   </ItemGroup>
 
 </Project>
