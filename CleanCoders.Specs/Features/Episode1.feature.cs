@@ -19,7 +19,7 @@ namespace CleanCoders.Specs.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.6.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Episode1: Present Codecasts", Description="\tSimple calculator for adding two numbers", SourceFile="Features\\Episode1.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("Episode1: Present Codecasts", SourceFile="Features\\Episode1.feature", SourceLine=0)]
     public partial class Episode1PresentCodecastsFeature
     {
         
@@ -34,7 +34,7 @@ namespace CleanCoders.Specs.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Episode1: Present Codecasts", "\tSimple calculator for adding two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Episode1: Present Codecasts", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,14 +71,14 @@ namespace CleanCoders.Specs.Features
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Present No Codecasts", new string[] {
-                "mytag"}, SourceLine=4)]
+                "mytag"}, SourceLine=3)]
         public virtual void PresentNoCodecasts()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Present No Codecasts", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -98,19 +98,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 5
  testRunner.Given("no codecasts", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
+#line 6
  testRunner.Given("user <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 7
  testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
+#line 8
  testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 10
+#line 9
  testRunner.Then("there will be no codecasts presented", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
