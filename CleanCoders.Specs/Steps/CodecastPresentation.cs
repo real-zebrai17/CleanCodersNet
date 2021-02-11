@@ -21,6 +21,15 @@ namespace CleanCoders.Specs.Steps
             public string published;
         }
 
+        private class PresentableCodeCastData
+        {
+            public string title;
+            public string picture;
+            public string description;
+            public string viewable;
+            public string downloadable;
+        }
+
         public class CodePresentationRunnerException : Exception
         {
             private readonly string _method;
@@ -34,6 +43,8 @@ namespace CleanCoders.Specs.Steps
         }
 
         #endregion 
+
+
         public CodecastPresentation()
         {
             Context.Gateway = new MockGateway();
@@ -88,7 +99,7 @@ namespace CleanCoders.Specs.Steps
         [Then(@"there will be no codecasts presented")]
         public void ThenThereWillBeNoCodecastsPresented()
         {
-            _useCase.getPresentedCodecasts(_gateKeeper.LoggerInUser)
+            _useCase.GetPresentedCodecasts(_gateKeeper.LoggerInUser)
                 .Any()
                 .Should().BeFalse();
         }
@@ -106,6 +117,25 @@ namespace CleanCoders.Specs.Steps
                 throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
         }
 
+        [Then(@"Ordered query:of Codecasts")]
+        public void ThenOrderedQueryOfCodecasts(Table table)
+        {
+            var expectedPresentedCodecasts = table.CreateSet<PresentableCodeCastData>().ToArray();
+            var presentedCodecastes = _useCase.GetPresentedCodecasts(_gateKeeper.LoggerInUser);
+
+            expectedPresentedCodecasts.Count().Should().Be(presentedCodecastes.Count());
+            for (int i = 0; i <  presentedCodecastes.Count(); i++)
+            {
+                presentedCodecastes[i].IsViewable
+                    .Should().Be(expectedPresentedCodecasts[i].viewable == "+");
+                presentedCodecastes[i].Title
+                    .Should().Be(expectedPresentedCodecasts[i].title);
+                presentedCodecastes[i].Title
+                    .Should().Be(expectedPresentedCodecasts[i].picture);
+                presentedCodecastes[i].Title
+                    .Should().Be(expectedPresentedCodecasts[i].description);
+            }
+        }
 
 
     }

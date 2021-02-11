@@ -34,7 +34,7 @@ namespace CleanCoders.Specs.TestDoubles
             return _codecasts.SingleOrDefault(c => c.Title == codeCastTitle);
         }
 
-        public IEnumerable<License> FindLicensesForAndCodecasts(User user, Codecast codeCast)
+        public IEnumerable<License> FindLicensesForUserAndCodecasts(User user, Codecast codeCast)
         {
             return _licenses.Where(c => c.User.IsSame(user) && c.CodeCast.IsSame(codeCast));
         }
@@ -44,21 +44,23 @@ namespace CleanCoders.Specs.TestDoubles
             return _users.SingleOrDefault(c => c.UserName == userName);
         }
 
-        public void Save(Codecast codecast)
+        public Codecast Save(Codecast codecast)
         {
-            _codecasts.Add(codecast);
+            _codecasts.Add((Codecast)EstablishId(codecast));
+            return codecast;
         }
 
-        public void Save(User user)
+        public User Save(User user)
         {
-            _users.Add(EstablishId(user));
-        }
-
-        private User EstablishId(User user)
-        {
-            if (string.IsNullOrWhiteSpace(user.Id))
-                user.Id = Guid.NewGuid().ToString();
+            _users.Add((User)EstablishId(user));
             return user;
+        }
+
+        private Entity EstablishId(Entity entity)
+        {
+            if (string.IsNullOrWhiteSpace(entity.Id))
+                entity.Id = Guid.NewGuid().ToString();
+            return entity;
         }
 
         public void Save(License license)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CleanCoders
 {
-    public class License
+    public class License 
     {
         private readonly User _user;
         private readonly Codecast _codeCast;

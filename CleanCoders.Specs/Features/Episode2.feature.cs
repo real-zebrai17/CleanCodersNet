@@ -120,7 +120,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
- testRunner.And("with license for <U> able to view <A>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("with license for <U> able to view A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
  testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -204,7 +204,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 28
- testRunner.And("with license for <U> able to view <A>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("with license for <U> able to view A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
  testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

@@ -7,14 +7,21 @@ namespace CleanCoders
 {
     public class PresentCodecastUseCase
     {
-        public List<PresentableCodeCast> getPresentedCodecasts(User loggedInUser)
+        public List<PresentableCodeCast> GetPresentedCodecasts(User loggedInUser)
         {
-            return new List<PresentableCodeCast>();
+            var presentableCodecasts = Context.Gateway.FindAllCodecasts()
+                .Select(pcc => new PresentableCodeCast
+                {
+                    IsViewable      = IsLicensedToViewCodeCast(loggedInUser, pcc),
+                    Title           = pcc.Title,
+                    PublicationDate = pcc.PublicationDate
+                });
+            return presentableCodecasts.ToList();
         }
 
         public bool IsLicensedToViewCodeCast(User user, Codecast codeCast)
         {
-            var licenses = Context.Gateway.FindLicensesForAndCodecasts(user, codeCast);
+            var licenses = Context.Gateway.FindLicensesForUserAndCodecasts(user, codeCast);
             return licenses.Any();
         }
     }

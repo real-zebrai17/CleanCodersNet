@@ -1,15 +1,11 @@
 ﻿using CleanCoders.Specs.TestDoubles;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CleanCoders.UnitTests
 {
     [TestFixture]
-    public class UserTests
+    public class EntityTests
     {
         [SetUp]
         public void SetUp()
@@ -18,37 +14,44 @@ namespace CleanCoders.UnitTests
         }
 
         [Test]
-        public void TwoDifferentUsersAreNotTheSame()
+        public void TwoDifferentEntitysAreNotTheSame()
         {
-            User u1 = new User("u1");
-            User u2 = new User("u2");
-            Context.Gateway.Save(u1);
-            Context.Gateway.Save(u2);
+            Entity e1 = new Entity();
+            Entity e2 = new Entity();
+            e1.Id = "e1Id";
+            e2.Id = "e2Id";
 
 
+            Assert.IsFalse(e1.IsSame(e2));
+        }
+
+        [Test]
+        public void OneEntityIsSameAsItself()
+        {
+            Entity e1 = new Entity();
+            e1.Id = "e1Id";
+
+            Assert.IsTrue(e1.IsSame(e1));
+        }
+
+        [Test]
+        public void EntitysWithTheSameIDAreTheSame()
+        {
+            Entity e1 = new Entity();
+            e1.Id = "e1Id";
+
+            Entity e2 = new Entity();
+            e2.Id = e1.Id;
+
+            Assert.IsTrue(e1.IsSame(e2));
+        }
+
+        [Test]
+        public void EntityWithNullIdsAreNeverTheSame()
+        {
+            Entity u1 = new Entity();
+            Entity u2 = new Entity();
             Assert.IsFalse(u1.IsSame(u2));
-        }
-
-        [Test]
-        public void OneUserIsSameAsItself()
-        {
-            User u1 = new User("u1");
-            Context.Gateway.Save(u1);
-
-            Assert.IsTrue(u1.IsSame(u1));
-        }
-
-        [Test]
-        public void UsersWithTheSameIDAreTheSame()
-        {
-            User u1 = new User("u1");
-            Context.Gateway.Save(u1);
-
-            User u2 = new User("u2");
-            u2.Id = u1.Id;
-
-            Assert.IsTrue(u1.IsSame(u2));
-
         }
     }
 }

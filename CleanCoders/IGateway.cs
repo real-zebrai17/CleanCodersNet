@@ -6,11 +6,11 @@ namespace CleanCoders
     {
         List<Codecast> FindAllCodecasts();
         void Delete(Codecast cc);
-        void Save(Codecast codecast);
-        void Save(User user);
+        Codecast Save(Codecast codecast);
+        User Save(User user);
         User FindUserByUserName(string userName);
         Codecast FindCodecastByTitle(string codeCastTitle);
         void Save(License license);
-        IEnumerable<License> FindLicensesForAndCodecasts(User user, Codecast codeCast);
+        IEnumerable<License> FindLicensesForUserAndCodecasts(User user, Codecast codeCast);
     }
 }
