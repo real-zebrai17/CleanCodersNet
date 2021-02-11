@@ -19,7 +19,7 @@ namespace CleanCoders.Specs.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.6.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Episode2: Present Codecasts", SourceFile="Features\\Episode2.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("Episode2: Present Codecasts", SourceFile="Features\\Episode2_3.feature", SourceLine=0)]
     public partial class Episode2PresentCodecastsFeature
     {
         
@@ -27,7 +27,7 @@ namespace CleanCoders.Specs.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Episode2.feature"
+#line 1 "Episode2_3.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
@@ -120,7 +120,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
- testRunner.And("with license for <U> able to view A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("with license for <U> able to download A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
  testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

@@ -1,6 +1,9 @@
 ﻿using CleanCoders.Specs.TestDoubles;
 using NUnit.Framework;
+using System;
 using System.Linq;
+using static CleanCoders.License.LicenseType;
+
 
 namespace CleanCoders.UnitTests
 {
@@ -26,54 +29,63 @@ namespace CleanCoders.UnitTests
         [Test]
         public void UserWithoutViewLicense_CannotViewCodecast()
         {
-            Assert.IsFalse(_useCase.IsLicensedToViewCodeCast(_user, _codeCast));
+            Assert.IsFalse(_useCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
         public void UserWithViewLicense_CanViewCodecast()
         {
-            var licence = new License(_user, _codeCast);
+            var licence = new License(VIEWING, _user, _codeCast);
             Context.Gateway.Save(licence);
 
-            Assert.IsTrue(_useCase.IsLicensedToViewCodeCast(_user, _codeCast));
+            Assert.IsTrue(_useCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
         public void UserWithViewLicense_CanViewOtherUsersCodecast()
         {
             var otherUser = Context.Gateway.Save(new User("otherUser"));
-            var licence = new License(_user, _codeCast);
+            var licence = new License(VIEWING, _user, _codeCast);
             Context.Gateway.Save(licence);
 
-            Assert.IsFalse(_useCase.IsLicensedToViewCodeCast(otherUser, _codeCast));
+            Assert.IsFalse(_useCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
         }
 
         [Test]
         public void PresentingOneCodecast()
         {
+            var now = new DateTime(2014, 5, 19);
             _codeCast.Title = "Some Title";
-            _codeCast.PublicationDate = "Tomorrow";
+            _codeCast.PublicationDate = now;
 
-            var presentedCodecasts = _useCase.GetPresentedCodecasts(_user);
+            var presentedCodecasts = _useCase.PresentCodeCasts(_user);
 
             Assert.AreEqual(1, presentedCodecasts.Count());
             Assert.AreEqual("Some Title", presentedCodecasts.Single().Title);
-            Assert.AreEqual("Tomorrow", presentedCodecasts.Single().PublicationDate);
+            Assert.AreEqual("5/19/2014", presentedCodecasts.Single().PublicationDate);
         }
 
         [Test]
         public void PresentedCodeCastIsNotViewableIfNoLicense()
         {
-            Assert.IsFalse(_useCase.GetPresentedCodecasts(_user).Single().IsViewable);
+            Assert.IsFalse(_useCase.PresentCodeCasts(_user).Single().IsViewable);
         }
 
         [Test]
-        public void PresentedCodeCastIsViewableIfLicenseExists()
+        public void PresentedCodeCastIsViewableIfViewableLicenseExists()
         {
-            Context.Gateway.Save(new License(_user, _codeCast));
-            Assert.IsTrue(_useCase.GetPresentedCodecasts(_user).Single().IsViewable);
+            Context.Gateway.Save(new License(VIEWING,  _user, _codeCast));
+            Assert.IsTrue(_useCase.PresentCodeCasts(_user).Single().IsViewable);
         }
 
+        [Test]
+        public void PresentedCodeCastIsViewableIfDownloadLicenseExists()
+        {
+            Context.Gateway.Save(new License(DOWNLOADING, _user, _codeCast));
+            var presentableCodecast = _useCase.PresentCodeCasts(_user).Single();
 
+            Assert.IsTrue(presentableCodecast.IsDownloadable);
+            Assert.IsFalse(presentableCodecast.IsViewable);
+        }
     }
 }

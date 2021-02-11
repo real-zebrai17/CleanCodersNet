@@ -9,7 +9,7 @@ Scenario: Present Downloadable Codecasts
 		| C     | 2/18/2014 |
 	And user <U>
 	And that user <U> is logged in
-	And with license for <U> able to view A
+	And with license for <U> able to download A
 	Then then following codecats will be presented for <U>
 	And Ordered query:of Codecasts 
 	| title | picture | description | viewable | downloadable |

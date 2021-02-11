@@ -1,28 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
+using static CleanCoders.License.LicenseType;
 
 namespace CleanCoders
 {
     public class PresentCodecastUseCase
     {
-        public List<PresentableCodeCast> GetPresentedCodecasts(User loggedInUser)
+        public List<PresentableCodeCast> PresentCodeCasts(User loggedInUser)
         {
-            var presentableCodecasts = Context.Gateway.FindAllCodecasts()
-                .Select(pcc => new PresentableCodeCast
-                {
-                    IsViewable      = IsLicensedToViewCodeCast(loggedInUser, pcc),
-                    Title           = pcc.Title,
-                    PublicationDate = pcc.PublicationDate
-                });
+            var presentableCodecasts = Context.Gateway.FindAllCodecastsSortedChronologically()
+                .Select(pcc => FormatCodecasts(loggedInUser, pcc));
             return presentableCodecasts.ToList();
         }
 
-        public bool IsLicensedToViewCodeCast(User user, Codecast codeCast)
+        private PresentableCodeCast FormatCodecasts(User loggedInUser, Codecast pcc)
+        {
+            return new PresentableCodeCast
+            {
+                IsDownloadable = IsLicensedFor(DOWNLOADING, loggedInUser, pcc),
+                IsViewable = IsLicensedFor(VIEWING, loggedInUser, pcc),
+                Title = pcc.Title,
+                PublicationDate = pcc.PublicationDate.ToString("M/d/yyyy", CultureInfo.InvariantCulture)
+            };
+        }
+
+        public bool IsLicensedFor(License.LicenseType licenseType, User user, Codecast codeCast)
         {
             var licenses = Context.Gateway.FindLicensesForUserAndCodecasts(user, codeCast);
-            return licenses.Any();
+            return licenses.Any(l => l.Type == licenseType);
         }
     }
 }

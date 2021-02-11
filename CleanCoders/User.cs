@@ -6,12 +6,11 @@ namespace CleanCoders
 {
     public class User : Entity
     {
-        private readonly string _userName;
-        public string UserName => _userName;
+        public string UserName { get; }
 
         public User(string userName)
         {
-            _userName = userName;
+            UserName = userName;
         }
     }
 }

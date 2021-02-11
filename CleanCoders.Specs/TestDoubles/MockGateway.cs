@@ -24,9 +24,10 @@ namespace CleanCoders.Specs.TestDoubles
             _codecasts.Remove(codecast);
         }
 
-        public List<Codecast> FindAllCodecasts()
+        public List<Codecast> FindAllCodecastsSortedChronologically()
         {
-            return _codecasts;
+            return _codecasts.OrderBy(c=>c.PublicationDate)
+                             .ToList();
         }
 
         public Codecast FindCodecastByTitle(string codeCastTitle)

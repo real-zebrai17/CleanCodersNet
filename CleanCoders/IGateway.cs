@@ -4,7 +4,7 @@ namespace CleanCoders
 {
     public interface IGateway
     {
-        List<Codecast> FindAllCodecasts();
+        List<Codecast> FindAllCodecastsSortedChronologically();
         void Delete(Codecast cc);
         Codecast Save(Codecast codecast);
         User Save(User user);

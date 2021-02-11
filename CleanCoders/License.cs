@@ -6,17 +6,19 @@ namespace CleanCoders
 {
     public class License 
     {
-        private readonly User _user;
-        private readonly Codecast _codeCast;
+        public enum LicenseType {  VIEWING, DOWNLOADING }
 
-        public License(User user, Codecast codeCast)
+        public License(LicenseType type, User user, Codecast codeCast)
         {
-            _user = user;
-            _codeCast = codeCast;
+            Type = type;
+            User = user;
+            CodeCast = codeCast;
         }
 
-        public User User => _user;
+        public User User { get; }
 
-        public Codecast CodeCast => _codeCast;
+        public Codecast CodeCast { get; }
+
+        public LicenseType Type { get; }
     }
 }
