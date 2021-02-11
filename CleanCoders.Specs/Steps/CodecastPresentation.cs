@@ -42,7 +42,7 @@ namespace CleanCoders.Specs.Steps
         [Given(@"that user (.*) is logged in")]
         public void GivenUserLoggedIn(string userName)
         {
-            var user = Context.Gateway.FindUser(userName);
+            var user = Context.Gateway.FindUserByUserName(userName);
             if (user != null)
                 _gateKeeper.SetCurrentUser(user);
             else
@@ -92,6 +92,20 @@ namespace CleanCoders.Specs.Steps
                 .Any()
                 .Should().BeFalse();
         }
+
+        [Given(@"with license for (.*) able to view (.*)")]
+        public void GivenWithLicenseForAbleToView(string userName, string codeCastTitle)
+        {
+            var user = Context.Gateway.FindUserByUserName(userName);
+            var codeCast = Context.Gateway.FindCodecastByTitle(codeCastTitle);
+
+            var license = new License(user, codeCast);
+            Context.Gateway.Save(license);
+
+            if (!_useCase.IsLicensedToViewCodeCast(user, codeCast))
+                throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
+        }
+
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CleanCoders
@@ -9,6 +10,12 @@ namespace CleanCoders
         public List<PresentableCodeCast> getPresentedCodecasts(User loggedInUser)
         {
             return new List<PresentableCodeCast>();
+        }
+
+        public bool IsLicensedToViewCodeCast(User user, Codecast codeCast)
+        {
+            var licenses = Context.Gateway.FindLicensesForAndCodecasts(user, codeCast);
+            return licenses.Any();
         }
     }
 }

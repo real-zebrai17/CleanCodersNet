@@ -98,29 +98,71 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "title",
+                            "published"});
+                table1.AddRow(new string[] {
+                            "A",
+                            "3/1/2014"});
+                table1.AddRow(new string[] {
+                            "B",
+                            "3/2/2014"});
+                table1.AddRow(new string[] {
+                            "C",
+                            "2/18/2014"});
 #line 5
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("Codecasts", ((string)(null)), table1, "Given ");
 #line hidden
-#line 6
- testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+ testRunner.And("user <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 7
- testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+ testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 8
- testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
+ testRunner.And("with license for <U> able to view <A>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 13
+ testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "title",
+                            "picture",
+                            "description",
+                            "viewable",
+                            "downloadable"});
+                table2.AddRow(new string[] {
+                            "C",
+                            "C",
+                            "C",
+                            "-",
+                            "-"});
+                table2.AddRow(new string[] {
+                            "A",
+                            "A",
+                            "A",
+                            "-",
+                            "+"});
+                table2.AddRow(new string[] {
+                            "B",
+                            "B",
+                            "B",
+                            "-",
+                            "-"});
+#line 14
+ testRunner.And("Ordered query:of Codecasts", ((string)(null)), table2, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Present Viewable Codecasts", SourceLine=9)]
+        [TechTalk.SpecRun.ScenarioAttribute("Present Viewable Codecasts", SourceLine=19)]
         public virtual void PresentViewableCodecasts()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Present Viewable Codecasts", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -140,59 +182,59 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "title",
                             "published"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "A",
                             "3/1/2014"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "B",
                             "3/2/2014"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "C",
                             "2/18/2014"});
-#line 11
- testRunner.Given("CodecastsList", ((string)(null)), table1, "Given ");
+#line 21
+ testRunner.Given("Codecasts", ((string)(null)), table3, "Given ");
 #line hidden
-#line 16
+#line 26
  testRunner.And("user <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 27
  testRunner.And("that user <U> is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
- testRunner.And("with liscense for <U> able to view <A>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+ testRunner.And("with license for <U> able to view <A>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 29
  testRunner.Then("then following codecats will be presented for <U>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "title",
                             "picture",
                             "description",
                             "viewable",
                             "downloadable"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "C",
                             "C",
                             "C",
                             "-",
                             "-"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "A",
                             "A",
                             "A",
                             "+",
                             "-"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "B",
                             "B",
                             "B",
                             "-",
                             "-"});
-#line 20
- testRunner.And("Ordered query:of Codecasts", ((string)(null)), table2, "And ");
+#line 30
+ testRunner.And("Ordered query:of Codecasts", ((string)(null)), table4, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

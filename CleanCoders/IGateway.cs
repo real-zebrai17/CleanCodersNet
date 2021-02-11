@@ -8,6 +8,9 @@ namespace CleanCoders
         void Delete(Codecast cc);
         void Save(Codecast codecast);
         void Save(User user);
-        User FindUser(string userName);
+        User FindUserByUserName(string userName);
+        Codecast FindCodecastByTitle(string codeCastTitle);
+        void Save(License license);
+        IEnumerable<License> FindLicensesForAndCodecasts(User user, Codecast codeCast);
     }
 }

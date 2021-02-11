@@ -10,11 +10,13 @@ namespace CleanCoders.Specs.TestDoubles
     {
         private readonly List<Codecast> _codecasts;
         private readonly List<User> _users;
+        private readonly List<License> _licenses;
 
         public MockGateway()
         {
             _codecasts = new List<Codecast>();
             _users = new List<User>();
+            _licenses = new List<License>();
         }
 
         public void Delete(Codecast codecast)
@@ -27,7 +29,17 @@ namespace CleanCoders.Specs.TestDoubles
             return _codecasts;
         }
 
-        public User FindUser(string userName)
+        public Codecast FindCodecastByTitle(string codeCastTitle)
+        {
+            return _codecasts.SingleOrDefault(c => c.Title == codeCastTitle);
+        }
+
+        public IEnumerable<License> FindLicensesForAndCodecasts(User user, Codecast codeCast)
+        {
+            return _licenses.Where(c => c.User.IsSame(user) && c.CodeCast.IsSame(codeCast));
+        }
+
+        public User FindUserByUserName(string userName)
         {
             return _users.SingleOrDefault(c => c.UserName == userName);
         }
@@ -39,7 +51,19 @@ namespace CleanCoders.Specs.TestDoubles
 
         public void Save(User user)
         {
-            _users.Add(user);
+            _users.Add(EstablishId(user));
+        }
+
+        private User EstablishId(User user)
+        {
+            if (string.IsNullOrWhiteSpace(user.Id))
+                user.Id = Guid.NewGuid().ToString();
+            return user;
+        }
+
+        public void Save(License license)
+        {
+            _licenses.Add(license);
         }
     }
 }
