@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CleanCoders
 {
-    public class License 
+    public class License : Entity
     {
         public enum LicenseType {  VIEWING, DOWNLOADING }
 

@@ -2,9 +2,14 @@
 
 namespace CleanCoders
 {
-    public class Entity
+    public class Entity : ICloneable
     {
         public string Id { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
 
         public bool IsSame(Entity entity)
         {

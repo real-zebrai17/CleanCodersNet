@@ -10,7 +10,7 @@ namespace CleanCoders
     {
         public List<PresentableCodeCast> PresentCodeCasts(User loggedInUser)
         {
-            var presentableCodecasts = Context.Gateway.FindAllCodecastsSortedChronologically()
+            var presentableCodecasts = Context.CodecastGateway.FindAllCodecastsSortedChronologically()
                 .Select(pcc => FormatCodecasts(loggedInUser, pcc));
             return presentableCodecasts.ToList();
         }
@@ -28,7 +28,7 @@ namespace CleanCoders
 
         public bool IsLicensedFor(License.LicenseType licenseType, User user, Codecast codeCast)
         {
-            var licenses = Context.Gateway.FindLicensesForUserAndCodecasts(user, codeCast);
+            var licenses = Context.LicenseGateway.FindLicensesForUserAndCodecasts(user, codeCast);
             return licenses.Any(l => l.Type == licenseType);
         }
     }

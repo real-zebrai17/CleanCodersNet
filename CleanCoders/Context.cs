@@ -6,6 +6,9 @@ namespace CleanCoders
 {
     public static class Context
     {
-        public static IGateway Gateway { get; set; }
+        public static ILicenseGateway LicenseGateway { get; set; }
+        public static IUserGateway UserGateway { get; set; }
+        public static ICodecastGateway CodecastGateway { get; set; }
+        public static GateKeeper GateKeeper { get; set; }
     }
 }

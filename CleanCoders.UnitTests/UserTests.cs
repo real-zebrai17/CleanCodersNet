@@ -10,7 +10,7 @@ namespace CleanCoders.UnitTests
         [SetUp]
         public void SetUp()
         {
-            Context.Gateway = new MockGateway();
+            Context.LicenseGateway = new InMemoryLicenseGateway();
         }
 
         [Test]
@@ -20,7 +20,6 @@ namespace CleanCoders.UnitTests
             Entity e2 = new Entity();
             e1.Id = "e1Id";
             e2.Id = "e2Id";
-
 
             Assert.IsFalse(e1.IsSame(e2));
         }

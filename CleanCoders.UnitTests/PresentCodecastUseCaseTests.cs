@@ -17,11 +17,11 @@ namespace CleanCoders.UnitTests
         [SetUp]
         public void SetUp()
         {
-            Context.Gateway = new MockGateway();
+            FixtureSetup.SetupContext();
 
             _useCase = new PresentCodecastUseCase();
-            _user = Context.Gateway.Save(new User("User"));
-            _codeCast = Context.Gateway.Save(new Codecast());
+            _user = Context.UserGateway.Save(new User("User"));
+            _codeCast = Context.CodecastGateway.Save(new Codecast());
 
         }
 
@@ -36,7 +36,7 @@ namespace CleanCoders.UnitTests
         public void UserWithViewLicense_CanViewCodecast()
         {
             var licence = new License(VIEWING, _user, _codeCast);
-            Context.Gateway.Save(licence);
+            Context.LicenseGateway.Save(licence);
 
             Assert.IsTrue(_useCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
@@ -44,9 +44,9 @@ namespace CleanCoders.UnitTests
         [Test]
         public void UserWithViewLicense_CanViewOtherUsersCodecast()
         {
-            var otherUser = Context.Gateway.Save(new User("otherUser"));
+            var otherUser = Context.UserGateway.Save(new User("otherUser"));
             var licence = new License(VIEWING, _user, _codeCast);
-            Context.Gateway.Save(licence);
+            Context.LicenseGateway.Save(licence);
 
             Assert.IsFalse(_useCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
         }
@@ -74,14 +74,14 @@ namespace CleanCoders.UnitTests
         [Test]
         public void PresentedCodeCastIsViewableIfViewableLicenseExists()
         {
-            Context.Gateway.Save(new License(VIEWING,  _user, _codeCast));
+            Context.LicenseGateway.Save(new License(VIEWING,  _user, _codeCast));
             Assert.IsTrue(_useCase.PresentCodeCasts(_user).Single().IsViewable);
         }
 
         [Test]
         public void PresentedCodeCastIsViewableIfDownloadLicenseExists()
         {
-            Context.Gateway.Save(new License(DOWNLOADING, _user, _codeCast));
+            Context.LicenseGateway.Save(new License(DOWNLOADING, _user, _codeCast));
             var presentableCodecast = _useCase.PresentCodeCasts(_user).Single();
 
             Assert.IsTrue(presentableCodecast.IsDownloadable);
