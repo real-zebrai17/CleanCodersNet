@@ -154,7 +154,5 @@ namespace CleanCoders.Specs.Steps
                     .Should().Be(expectedPresentedCodecasts[i].description);
             }
         }
-
-
     }
 }
