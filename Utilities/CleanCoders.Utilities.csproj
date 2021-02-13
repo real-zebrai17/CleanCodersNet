@@ -8,6 +8,25 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanCoders.Specs\CleanCoders.Specs.csproj" />
     <ProjectReference Include="..\CleanCoders.WebServer\CleanCoders.WebServer.csproj" />
+    <ProjectReference Include="..\CleanCoders\CleanCoders.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\html\codecast.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\html\contentAction.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\html\contentActions.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\html\frontpage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\html\purchaseOption.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
