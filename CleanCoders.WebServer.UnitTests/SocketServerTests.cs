@@ -145,7 +145,6 @@ namespace CleanCoders.WebServer.UnitTests
                     Monitor.Wait(_service);
                 }
 
-                _server.Stop();
 
                 Assert.AreEqual("Hello\n", _service.Message);
                 _server.Stop();
@@ -200,14 +199,14 @@ namespace CleanCoders.WebServer.UnitTests
             }
 
             [Test]
-            public void CanSendAndRecievedData()
+            public void CanEcho()
             {
                 var _server = new SocketServer(_port, _service);
                 _server.Start();
 
                 var socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(IPAddress.Parse("127.0.0.1"), _port);
-                socket.Send(Encoding.UTF8.GetBytes("Hello\n"));
+                socket.Send(Encoding.UTF8.GetBytes("Echo Echo\n"));
 
                 lock (_service)
                 {
@@ -216,11 +215,9 @@ namespace CleanCoders.WebServer.UnitTests
 
                 var buffer = new byte[100];
                 var length = socket.Receive(buffer);
-                var message = Encoding.UTF8.GetString(buffer).Substring(0, length);
+                var response = Encoding.UTF8.GetString(buffer).Substring(0, length);
 
-                _server.Stop();
-
-                Assert.AreEqual("Hello\n", message);
+                Assert.AreEqual("Echo Echo\n", response);
                 _server.Stop();
             }
         }
@@ -231,11 +228,13 @@ namespace CleanCoders.WebServer.UnitTests
             {
                 DoService(socket);
 
-                socket.Close();
+                
                 lock (this)
                 {
                     Monitor.Pulse(this);
                 }
+
+                socket.Close();
             }
             protected abstract void DoService(Socket socket);
         }
