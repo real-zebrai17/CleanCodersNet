@@ -16,6 +16,7 @@ namespace CleanCoders
             public void Serve(Socket socket)
             {
                 socket.Send(MakeResponse(GetFrontPage()));
+                socket.Close();
             }
 
             private byte[] MakeResponse(string content)
