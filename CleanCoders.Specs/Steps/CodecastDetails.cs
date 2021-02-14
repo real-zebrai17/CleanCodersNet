@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System;
 using TechTalk.SpecFlow;
 
 namespace CleanCoders.Specs.Steps
@@ -6,7 +7,7 @@ namespace CleanCoders.Specs.Steps
     [Binding]
     public class CodecastDetails
     {
-        private CodecastDetailsUseCase _useCase = new CodecastDetailsUseCase();
+        private CodeCastDetailsUseCase _useCase = new CodeCastDetailsUseCase();
         private PresentableCodeCastDetails _details;
 
         [When(@"the user request details for (.*)")]
@@ -18,14 +19,16 @@ namespace CleanCoders.Specs.Steps
         [Then(@"the presented title is (.*), published (.*)")]
         public void ThenThePresentedTitleIsPublished(string title, string publishedDate)
         {
-            _details.title.Should().Be(title);
-            _details.publicationDate.Should().Be(publishedDate);
+            _details.Title.Should().Be(title);
+            _details.PublicationDate.Should().Be(publishedDate);
         }
 
         [Then(@"with option to purchase (.*) license")]
         public void ThenWithOptionToPurchaseLicense(string licenseType)
         {
-            ScenarioContext.Current.Pending();
+            ((string.Equals(licenseType, "viewing", StringComparison.InvariantCultureIgnoreCase) && !_details.IsViewable) ||
+             (string.Equals(licenseType, "downloading", StringComparison.InvariantCultureIgnoreCase) && !_details.IsDownloadable))
+             .Should().BeTrue();
         }
     }
 }

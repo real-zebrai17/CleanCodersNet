@@ -13,7 +13,7 @@ namespace CleanCoders.Specs.Steps
     [Binding]
     public class CodecastPresentation
     {
-        PresentCodecastUseCase _useCase = new PresentCodecastUseCase();
+        CodecastSummaryUseCase _useCase = new CodecastSummaryUseCase();
         
 
         #region Internal Classes 
@@ -120,7 +120,7 @@ namespace CleanCoders.Specs.Steps
             var license = new License(VIEWING, user, codeCast);
             Context.LicenseGateway.Save(license);
 
-            if (!_useCase.IsLicensedFor(VIEWING, user, codeCast))
+            if (!CodecastSummaryUseCase.IsLicensedFor(VIEWING, user, codeCast))
                 throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
         }
 
@@ -133,7 +133,7 @@ namespace CleanCoders.Specs.Steps
             var license = new License(DOWNLOADING, user, codeCast);
             Context.LicenseGateway.Save(license);
 
-            if (!_useCase.IsLicensedFor(DOWNLOADING, user, codeCast))
+            if (!CodecastSummaryUseCase.IsLicensedFor(DOWNLOADING, user, codeCast))
                 throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
         }
 

@@ -12,4 +12,4 @@ Scenario: Show Episode
 	When the user request details for episode-1
 	Then the presented title is A, published 3/1/2014
 	And with option to purchase viewing license
-	And with option to purchase <downloading> license
+	And with option to purchase downloading license

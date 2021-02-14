@@ -32,7 +32,7 @@ namespace CleanCoders
 
             private string GetFrontPage()
             {
-                var useCase = new PresentCodecastUseCase();
+                var useCase = new CodecastSummaryUseCase();
                 var presentableCodeCasts = useCase.PresentCodeCasts(Context.UserGateway.FindUserByUserName("Micah"));
 
                 var frontPageTemplate = ViewTemplate.Create("Resources/html/frontpage.html");

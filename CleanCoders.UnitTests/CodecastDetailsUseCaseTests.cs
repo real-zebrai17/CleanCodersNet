@@ -32,11 +32,23 @@ namespace CleanCoders.UnitTests
 
             }); ;
 
-            var presentableCodeCastDetails = new CodecastDetailsUseCase()
+            var details = new CodeCastDetailsUseCase()
                                         .RequestCodecastDetails(_user, "permalink-a");
+
+            Assert.True(details.WasFound);
+            Assert.AreEqual("Codecast", details.Title);
+            Assert.AreEqual("1/2/2015", details.PublicationDate);
+        }
+
+
+        [Test]
+        public void CreatesCodecastDetailsPresentaionDoesntCrashOnMissingCodecast()
+        {
+
+            var details = new CodeCastDetailsUseCase()
+                                        .RequestCodecastDetails(_user, "missing");
             
-            Assert.AreEqual("Codecast", presentableCodeCastDetails.title);
-            Assert.AreEqual("1/2/2015", presentableCodeCastDetails.publicationDate);
+            Assert.False(details.WasFound);
         }
 
     }

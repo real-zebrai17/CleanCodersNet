@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 
 namespace CleanCoders
 {
-    public class CodecastDetailsUseCase
+    public class CodeCastDetailsUseCase
     {
         public PresentableCodeCastDetails RequestCodecastDetails(User loggerInUser, string permalink)
         {
             var codecast = Context.CodecastGateway.FindCodecastByPermalink(permalink);
-            return new PresentableCodeCastDetails
-            {
-                title = codecast.Title,
-                publicationDate = codecast.PublicationDate.ToString("M/d/yyyy", CultureInfo.InvariantCulture)
-            };
+            if (codecast == null)
+                return new PresentableCodeCastDetails { WasFound = false };
+
+            var details = new PresentableCodeCastDetails();
+            CodecastSummaryUseCase.DoFormatSummaryFields(loggerInUser, codecast, details);
+            details.WasFound = true;
+
+            return details;
         }
     }
 }

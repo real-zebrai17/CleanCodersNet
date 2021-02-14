@@ -8,9 +8,9 @@ using static CleanCoders.License.LicenseType;
 namespace CleanCoders.UnitTests
 {
     [TestFixture]
-    public class PresentCodecastUseCaseTests
+    public class CodecastUseSummaryCaseTests
     {
-        private PresentCodecastUseCase _useCase;
+        private CodecastSummaryUseCase _useCase;
         private User _user;
         private Codecast _codeCast;
 
@@ -19,7 +19,7 @@ namespace CleanCoders.UnitTests
         {
             FixtureSetup.SetupContext();
 
-            _useCase = new PresentCodecastUseCase();
+            _useCase = new CodecastSummaryUseCase();
             _user = Context.UserGateway.Save(new User("User"));
             _codeCast = Context.CodecastGateway.Save(new Codecast());
 
@@ -29,7 +29,7 @@ namespace CleanCoders.UnitTests
         [Test]
         public void UserWithoutViewLicense_CannotViewCodecast()
         {
-            Assert.IsFalse(_useCase.IsLicensedFor(VIEWING, _user, _codeCast));
+            Assert.IsFalse(CodecastSummaryUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace CleanCoders.UnitTests
             var licence = new License(VIEWING, _user, _codeCast);
             Context.LicenseGateway.Save(licence);
 
-            Assert.IsTrue(_useCase.IsLicensedFor(VIEWING, _user, _codeCast));
+            Assert.IsTrue(CodecastSummaryUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace CleanCoders.UnitTests
             var licence = new License(VIEWING, _user, _codeCast);
             Context.LicenseGateway.Save(licence);
 
-            Assert.IsFalse(_useCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
+            Assert.IsFalse(CodecastSummaryUseCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
         }
 
         [Test]

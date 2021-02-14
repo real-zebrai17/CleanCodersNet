@@ -1,8 +1,8 @@
 ﻿namespace CleanCoders
 {
     public class PresentableCodeCastDetails
+        : PresentableCodeCastSummary
     {
-        public string title;
-        public string publicationDate;
+        public bool WasFound { get; set; }
     }
 }

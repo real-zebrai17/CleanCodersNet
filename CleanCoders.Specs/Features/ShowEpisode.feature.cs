@@ -134,7 +134,7 @@ this.FeatureBackground();
  testRunner.And("with option to purchase viewing license", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
- testRunner.And("with option to purchase <downloading> license", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("with option to purchase downloading license", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -2,7 +2,7 @@
 
 namespace CleanCoders
 {
-    public class PresentableCodeCast
+    public class PresentableCodeCastSummary
     {
         public bool IsViewable;
         public bool IsDownloadable;
