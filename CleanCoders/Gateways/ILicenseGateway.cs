@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CleanCoders.Entities;
+using System.Collections.Generic;
 
-namespace CleanCoders
+namespace CleanCoders.Gateways
 {
     public interface ILicenseGateway
     {

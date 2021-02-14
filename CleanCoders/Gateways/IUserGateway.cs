@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CleanCoders.Entities;
 
-namespace CleanCoders
+namespace CleanCoders.Gateways
 {
     public interface IUserGateway
     {

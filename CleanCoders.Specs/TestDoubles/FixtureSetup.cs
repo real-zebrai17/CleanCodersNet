@@ -1,5 +1,6 @@
-﻿using System;
-using static CleanCoders.License.LicenseType;
+﻿using CleanCoders.Entities;
+using System;
+using static CleanCoders.Entities.License.LicenseType;
 
 namespace CleanCoders.Specs.TestDoubles
 {

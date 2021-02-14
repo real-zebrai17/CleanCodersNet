@@ -1,16 +1,18 @@
-﻿using CleanCoders.Specs.TestDoubles;
+﻿using CleanCoders.Entities;
+using CleanCoders.Specs.TestDoubles;
+using CleanCoders.UseCases.CodeCastSummaries;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using static CleanCoders.License.LicenseType;
+using static CleanCoders.Entities.License.LicenseType;
 
 
-namespace CleanCoders.UnitTests
+namespace CleanCoders.UnitTests.UseCases.CodeCastSummaries
 {
     [TestFixture]
-    public class CodecastUseSummaryCaseTests
+    public class CodecastUseSummariesCaseTests
     {
-        private CodecastSummaryUseCase _useCase;
+        private CodecastSummariesUseCase _useCase;
         private User _user;
         private Codecast _codeCast;
 
@@ -19,7 +21,7 @@ namespace CleanCoders.UnitTests
         {
             FixtureSetup.SetupContext();
 
-            _useCase = new CodecastSummaryUseCase();
+            _useCase = new CodecastSummariesUseCase();
             _user = Context.UserGateway.Save(new User("User"));
             _codeCast = Context.CodecastGateway.Save(new Codecast());
 
@@ -29,7 +31,7 @@ namespace CleanCoders.UnitTests
         [Test]
         public void UserWithoutViewLicense_CannotViewCodecast()
         {
-            Assert.IsFalse(CodecastSummaryUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
+            Assert.IsFalse(CodecastSummariesUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
@@ -38,7 +40,7 @@ namespace CleanCoders.UnitTests
             var licence = new License(VIEWING, _user, _codeCast);
             Context.LicenseGateway.Save(licence);
 
-            Assert.IsTrue(CodecastSummaryUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
+            Assert.IsTrue(CodecastSummariesUseCase.IsLicensedFor(VIEWING, _user, _codeCast));
         }
 
         [Test]
@@ -48,7 +50,7 @@ namespace CleanCoders.UnitTests
             var licence = new License(VIEWING, _user, _codeCast);
             Context.LicenseGateway.Save(licence);
 
-            Assert.IsFalse(CodecastSummaryUseCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
+            Assert.IsFalse(CodecastSummariesUseCase.IsLicensedFor(VIEWING, otherUser, _codeCast));
         }
 
         [Test]

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanCoders
+namespace CleanCoders.Entities
 {
     public class Codecast : Entity
     {

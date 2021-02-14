@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CleanCoders.Entities;
+using CleanCoders.UseCases.CodeCastSummaries;
 
-namespace CleanCoders
+namespace CleanCoders.UseCases.CodeCastDetails
 {
     public class CodeCastDetailsUseCase
     {
@@ -16,7 +12,7 @@ namespace CleanCoders
                 return new PresentableCodeCastDetails { WasFound = false };
 
             var details = new PresentableCodeCastDetails();
-            CodecastSummaryUseCase.DoFormatSummaryFields(loggerInUser, codecast, details);
+            CodecastSummariesUseCase.DoFormatSummaryFields(loggerInUser, codecast, details);
             details.WasFound = true;
 
             return details;

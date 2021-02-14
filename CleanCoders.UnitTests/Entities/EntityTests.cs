@@ -1,8 +1,9 @@
-﻿using CleanCoders.Specs.TestDoubles;
+﻿using CleanCoders.Entities;
+using CleanCoders.Specs.TestDoubles;
 using NUnit.Framework;
 
 
-namespace CleanCoders.UnitTests
+namespace CleanCoders.UnitTests.Entities
 {
     [TestFixture]
     public class EntityTests

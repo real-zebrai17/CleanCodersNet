@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CleanCoders.Specs\CleanCoders.Specs.csproj" />
-    <ProjectReference Include="..\CleanCoders.WebServer\CleanCoders.WebServer.csproj" />
     <ProjectReference Include="..\CleanCoders\CleanCoders.csproj" />
   </ItemGroup>
 

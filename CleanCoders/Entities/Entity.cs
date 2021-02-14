@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanCoders
+namespace CleanCoders.Entities
 {
     public class Entity : ICloneable
     {
@@ -8,12 +8,12 @@ namespace CleanCoders
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
 
         public bool IsSame(Entity entity)
         {
-            return Id != null && Object.Equals(Id, entity.Id);
+            return Id != null && Equals(Id, entity.Id);
         }
     }
 }

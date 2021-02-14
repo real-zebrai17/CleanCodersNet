@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanCoders
+namespace CleanCoders.UseCases.CodeCastSummaries
 {
     public class PresentableCodeCastSummary
     {

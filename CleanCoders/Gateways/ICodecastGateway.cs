@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CleanCoders.Entities;
+using System.Collections.Generic;
 
-namespace CleanCoders
+namespace CleanCoders.Gateways
 {
     public interface ICodecastGateway
     {
@@ -9,6 +10,6 @@ namespace CleanCoders
         List<Codecast> FindAllCodecastsSortedChronologically();
         void Delete(Codecast cc);
         Codecast Save(Codecast codecast);
-        
+
     }
 }

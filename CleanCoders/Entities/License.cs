@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanCoders
+namespace CleanCoders.Entities
 {
     public class License : Entity
     {
-        public enum LicenseType {  VIEWING, DOWNLOADING }
+        public enum LicenseType { VIEWING, DOWNLOADING }
 
         public License(LicenseType type, User user, Codecast codeCast)
         {

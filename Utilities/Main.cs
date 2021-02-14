@@ -6,6 +6,8 @@ using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
+using CleanCoders.UseCases;
+using CleanCoders.UseCases.CodeCastSummaries;
 
 namespace CleanCoders
 {
@@ -32,7 +34,7 @@ namespace CleanCoders
 
             private string GetFrontPage()
             {
-                var useCase = new CodecastSummaryUseCase();
+                var useCase = new CodecastSummariesUseCase();
                 var presentableCodeCasts = useCase.PresentCodeCasts(Context.UserGateway.FindUserByUserName("Micah"));
 
                 var frontPageTemplate = ViewTemplate.Create("Resources/html/frontpage.html");

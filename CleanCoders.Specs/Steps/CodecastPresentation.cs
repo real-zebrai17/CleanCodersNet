@@ -1,4 +1,6 @@
-﻿using CleanCoders.Specs.TestDoubles;
+﻿using CleanCoders.Entities;
+using CleanCoders.Specs.TestDoubles;
+using CleanCoders.UseCases.CodeCastSummaries;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
@@ -6,14 +8,14 @@ using System.Globalization;
 using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using static CleanCoders.License.LicenseType;
+using static CleanCoders.Entities.License.LicenseType;
 
 namespace CleanCoders.Specs.Steps
 {
     [Binding]
     public class CodecastPresentation
     {
-        CodecastSummaryUseCase _useCase = new CodecastSummaryUseCase();
+        CodecastSummariesUseCase _useCase = new CodecastSummariesUseCase();
         
 
         #region Internal Classes 
@@ -120,7 +122,7 @@ namespace CleanCoders.Specs.Steps
             var license = new License(VIEWING, user, codeCast);
             Context.LicenseGateway.Save(license);
 
-            if (!CodecastSummaryUseCase.IsLicensedFor(VIEWING, user, codeCast))
+            if (!CodecastSummariesUseCase.IsLicensedFor(VIEWING, user, codeCast))
                 throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
         }
 
@@ -133,7 +135,7 @@ namespace CleanCoders.Specs.Steps
             var license = new License(DOWNLOADING, user, codeCast);
             Context.LicenseGateway.Save(license);
 
-            if (!CodecastSummaryUseCase.IsLicensedFor(DOWNLOADING, user, codeCast))
+            if (!CodecastSummariesUseCase.IsLicensedFor(DOWNLOADING, user, codeCast))
                 throw new CodePresentationRunnerException(nameof(GivenWithLicenseForAbleToView), "codeCast license not setup.");
         }
 

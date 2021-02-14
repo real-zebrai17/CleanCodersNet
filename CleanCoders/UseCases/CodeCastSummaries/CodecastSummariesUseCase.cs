@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CleanCoders.Entities;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using static CleanCoders.License.LicenseType;
+using static CleanCoders.Entities.License.LicenseType;
 
-namespace CleanCoders
+namespace CleanCoders.UseCases.CodeCastSummaries
 {
-    public class CodecastSummaryUseCase
+    public class CodecastSummariesUseCase
     {
         public List<PresentableCodeCastSummary> PresentCodeCasts(User loggedInUser)
         {

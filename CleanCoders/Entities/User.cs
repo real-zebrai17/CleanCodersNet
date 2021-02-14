@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanCoders
+namespace CleanCoders.Entities
 {
     public class User : Entity
     {

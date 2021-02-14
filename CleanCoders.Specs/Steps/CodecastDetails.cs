@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using CleanCoders.UseCases.CodeCastDetails;
+using FluentAssertions;
 using System;
 using TechTalk.SpecFlow;
 

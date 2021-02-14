@@ -1,13 +1,11 @@
-﻿using CleanCoders.Specs.TestDoubles;
+﻿using CleanCoders.Entities;
+using CleanCoders.Specs.TestDoubles;
+using CleanCoders.UseCases.CodeCastDetails;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CleanCoders.UnitTests
+namespace CleanCoders.UnitTests.UseCases.CodeCastDetails
 {
     [TestFixture]
     public class CodecastDetailsUseCaseTests
