@@ -21,6 +21,7 @@ namespace CleanCoders.Specs.Steps
         {
             public string title;
             public string published;
+            public string permalink;
         }
 
         private class PresentableCodeCastData
@@ -85,8 +86,12 @@ namespace CleanCoders.Specs.Steps
             var codecasts = table.CreateSet<CodeCastData>();
             foreach (var codecast in codecasts)
                 Context.CodecastGateway.Save(
-                    new Codecast { Title = codecast.title, PublicationDate = DateTime.ParseExact(codecast.published, "M/d/yyyy", CultureInfo.InvariantCulture) }
-                    );
+                    new Codecast
+                    {
+                        Title           = codecast.title,
+                        PublicationDate = DateTime.ParseExact(codecast.published, "M/d/yyyy", CultureInfo.InvariantCulture),
+                        Permalink       = codecast.permalink
+                    });
         }
 
         [Then(@"then following codecats will be presented for (.*)")]

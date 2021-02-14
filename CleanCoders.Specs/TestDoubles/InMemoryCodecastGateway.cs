@@ -13,6 +13,11 @@ namespace CleanCoders.Specs.TestDoubles
                              .ToList();
         }
 
+        public Codecast FindCodecastByPermalink(string permalink)
+        {
+            return Entities.SingleOrDefault(c => c.Permalink == permalink);
+        }
+
         public Codecast FindCodecastByTitle(string codeCastTitle)
         {
             return Entities.SingleOrDefault(c => c.Title == codeCastTitle);

@@ -6,5 +6,6 @@ namespace CleanCoders
     {
         public string Title { get; set; }
         public DateTime PublicationDate { get; set; } = DateTime.Now;
+        public string Permalink { get; set; }
     }
 }
